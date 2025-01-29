@@ -1,69 +1,59 @@
-/* Reset y variables */
+/* Variables de color y reset */
 :root {
-  --primary-color: #052a79;
-  --secondary-color: #010b29;
-  --background-color: #ffffff;
-  --secondary-bg: #f3f4f6;
-  --text-color: #1f2937;
-  --text-light: #6b7280;
+  --primary-color: #052a79; /* Color principal */
+  --secondary-color: #010b29; /* Color secundario */
+  --background-color: #ffffff; /* Color de fondo */
+  --secondary-bg: #f3f4f6; /* Fondo secundario */
+  --text-color: #1f2937; /* Color del texto */
+  --text-light: #6b7280; /* Color de texto claro */
 }
-
+/* Reset de márgenes y padding */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el ancho y alto total */
 }
-
 body {
-  font-family: "Segoe UI", system-ui, sans-serif;
-  line-height: 1.6;
-  color: var(--text-color);
-  background-color: rgb(245, 245, 245);
+  font-family: "Segoe UI", system-ui, sans-serif; /* Tipografía del cuerpo */
+  line-height: 1.6; /* Altura de línea */
+  color: var(--text-color); /* Color del texto */
+  background-color: rgb(245, 245, 245); /* Color de fondo del cuerpo */
 }
-
-/* Header y navegación */
-header {
-  background-color: #07366473;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.navbar {
   position: fixed;
   width: 100%;
   height: 100px;
-  top: 0;
-  z-index: 1000;
-  transition: background-color 0.5s, height 0.5s;
-}
-
-.navbar.scrolled {
-  background-color: rgba(255, 255, 255, 1);
-  height: 80px;
-}
-
-nav {
-  color: #fff;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #33333341;
+  padding: 15px 20px;
+  transition: background-color 0.3s, height 0.3s;
 }
-
 .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--primary-color);
+  color: white;
+  font-size: 24px;
 }
-
-nav ul {
-  display: flex;
-  gap: 2rem;
+.navbar.scrolled{
+  background-color: rgb(245, 245, 245);
+  height: 80px;
+}
+.navbar.scrolled .nav-font {
+  color: rgb(255, 0, 0); /* Cambia el color de los enlaces */
+  font-size: 16px; /* Cambia el tamaño de la letra */
+}
+.nav-list {
   list-style: none;
+  display: flex;
 }
 
-nav a {
-  text-decoration: none;
+.nav-list li {
+  margin: 0 15px;
+}
 
-  font-weight: 500;
+.nav-list a {
+  color: white;
+  text-decoration: none;
 }
 
 .menu-toggle {
@@ -72,302 +62,223 @@ nav a {
   cursor: pointer;
 }
 
-.menu-toggle .bar {
+.bar {
   height: 3px;
   width: 25px;
-  background-color: black;
-  margin: 3px 0;
+  background-color: white;
+  margin: 4px 0;
 }
 
-ul li a {
-  text-decoration: none;
-  
-  font-size: 16px;
-  display: block; 
-}
-
-
-ul li a:hover {
-  color: #007BFF; 
-}
-
-
-ul li a:active,
-ul li a:focus {
-  color: black; 
-  outline: none; 
-}
-
-/* Estilos para pantallas pequeñas */
+/* Estilos responsivos */
 @media (max-width: 768px) {
-  ul {
-    display: none;
-    /* Ocultar los enlaces de la navbar por defecto */
-    flex-direction: column;
-    /* Cambiar la dirección del flex a columna */
-    position: absolute;
-    /* Posicionarlo de manera absoluta */
-    top: 60px;
-    /* Ajustar según la altura de la navbar */
-    left: 0;
-    background-color: white;
-    width: 100%;
-    z-index: 1;
+  .nav-list {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      top: 100px;
+      left: 0;
+      background-color: #333;
   }
 
-  ul.show {
-    display: flex;
-
-
+  .nav-list.active {
+      display: flex;
   }
 
   .menu-toggle {
-    font-size: 30px;
-    color: var(--primary-color);
-    display: flex;
-    /* Mostrar el botón de menú */
-  }
-
-  ul li {
-    margin: 10px 0;
-    /* Espaciado vertical entre los enlaces */
-    padding-left: 20px;
-    /* Espacio interno a la izquierda */
-
-
-    ul li a {
-      text-decoration: none;
-      color: black;
-      font-size: 16px;
-      display: block;
-      /* Asegura que el área clickeable sea más grande */
-    }
+      display: flex;
   }
 }
-
-/* Botones CTA */
+/* Botones de llamada a la acción (CTA) */
 .cta-button {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background-color 0.3s;
+  background-color: var(--primary-color); /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  padding: 0.75rem 1.5rem; /* Espaciado interno */
+  border-radius: 0.5rem; /* Bordes redondeados */
+  text-decoration: none; /* Sin subrayado en el botón */
+  font-weight: 600; /* Peso de la fuente */
+  transition: background-color 0.3s; /* Transición suave para el color de fondo */
 }
-
 .cta-button:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--secondary-color); /* Color de fondo al pasar el ratón por encima */
 }
-
-/* Secciones principales */
+/* Estilos para las secciones principales */
 main {
-  margin-top: 4rem;
+  margin-top: 4rem; /* Margen superior para el contenido principal */
 }
-
 .section {
-  padding: 5rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-
+  padding: 5rem 2rem; /* Espaciado interno */
+  max-width: 1200px; /* Ancho máximo */
+  margin: 0 auto; /* Centra la sección */
 }
-
-/* Hero section */
+/* Sección Hero */
 #hero {
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 10rem 2rem;
-  text-align: center;
-  margin-bottom: 140px;
+  background-repeat: no-repeat; /* Sin repetición de fondo */
+  background-size: cover; /* Cubrir todo el fondo */
+  padding: 10rem 2rem; /* Espaciado interno */
+  text-align: center; /* Alinear texto al centro */
+  margin-bottom: 140px; /* Margen inferior */
 }
-
 .hero-content {
-  background-color: rgba(0, 0, 0, 0.76);
-  color: #ffffff;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 5%;
+  background-color: rgba(0, 0, 0, 0.76); /* Fondo oscuro con transparencia */
+  color: #ffffff; /* Color del texto */
+  max-width: 800px; /* Ancho máximo */
+  margin: 0 auto; /* Centra el contenido */
+  padding: 5%; /* Espaciado interno */
 }
-
 #video_background {
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -1000;
-  overflow: hidden;
+  position: absolute; /* Posición absoluta para el video */
+  bottom: 0px; /* Alinea al fondo */
+  right: 0px; /* Alinea a la derecha */
+  min-width: 100%; /* Ancho mínimo */
+  min-height: 100%; /* Altura mínima */
+  width: auto; /* Ancho automático */
+  height: auto; /* Altura automática */
+  z-index: -1000; /* Z-index para enviar al fondo */
+  overflow: hidden; /* Oculta el desbordamiento */
+  
 }
 
 #video_pattern {
-  background: #fff;
-  position: fixed;
-  opacity: 0.8;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+  background: #fff; /* Fondo blanco */
+  position: fixed; /* Posición fija */
+  opacity: 0.8; /* Opacidad */
+  left: 0px; /* Alinea a la izquierda */
+  top: 0px; /* Alinea en la parte superior */
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Altura completa */
+  z-index: 1; /* Z-index para superposición */
 }
-
 .hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.5rem; /* Tamaño de la fuente del título */
+  margin-bottom: 1.5rem; /* Margen inferior */
 }
-
 .hero-content p {
-  margin-bottom: 30px;
+  margin-bottom: 30px; /* Margen inferior */
 }
-
-/* Grids y cards */
+/* Grids y tarjetas */
 .services-grid,
 .values-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  display: grid; /* Usar grid para disposición */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas responsivas */
+  gap: 2rem; /* Espacio entre elementos */
+  margin-top: 2rem; /* Margen superior */
 }
-
 .service-card,
 .value-card {
-  background: white;
-  padding: 4rem 2rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+  background: white; /* Fondo blanco */
+  padding: 4rem 2rem; /* Espaciado interno */
+  border-radius: 0.5rem; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+  transition: transform 0.3s; /* Transición suave para el efecto hover */
 }
-
 .service-card,
 .value-card h3 {
-  font-size: 1.5rem;
+  font-size: 1.5rem; /* Tamaño de la fuente del título de la tarjeta */
 }
-
 .service-card,
 .value-card p {
-  margin-top: 10px;
-  font-size: 1.3rem;
+  margin-top: 10px; /* Margen superior para el texto */
+  font-size: 1.3rem; /* Tamaño de la fuente del texto */
 }
-
-
 .service-card:hover,
 .value-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px); /* Efecto de elevar la tarjeta al pasar el ratón */
 }
-
 .icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 2rem; /* Tamaño del icono */
+  margin-bottom: 1rem; /* Margen inferior */
 }
-
 /* Formulario de comparación */
 .compare-main {
-  background-color: var(--secondary-bg);
-  min-height: 100vh;
-  padding-top: 5rem;
+  background-color: var(--secondary-bg); /* Color de fondo de la sección de comparación */
+  min-height: 100vh; /* Altura mínima de la sección */
+  padding-top: 5rem; /* Espaciado superior */
 }
-
 .compare-section {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
+  max-width: 800px; /* Ancho máximo del formulario */
+  margin: 0 auto; /* Centra la sección */
+  padding: 2rem; /* Espaciado interno */
 }
-
 .comparison-form {
-  background: white;
-  padding: 2rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 2rem;
+  background: white; /* Fondo blanco */
+  padding: 2rem; /* Espaciado interno */
+  border-radius: 0.5rem; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+  margin-top: 2rem; /* Margen superior */
 }
-
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem; /* Margen inferior para el grupo de formulario */
 }
-
 .form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+  display: block; /* Mostrar el label como bloque */
+  margin-bottom: 0.5rem; /* Margen inferior */
+  font-weight: 500; /* Peso de la fuente */
 }
-
 .form-group input,
 .form-group select {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.375rem;
-  font-size: 1rem;
+  width: 100%; /* Ancho completo */
+  padding: 0.75rem; /* Espaciado interno */
+  border: 1px solid #e5e7eb; /* Borde del input */
+  border-radius: 0.375rem; /* Bordes redondeados */
+  font-size: 1rem; /* Tamaño de la fuente */
 }
-
 /* Resultados de comparación */
 .comparison-results {
-  margin-top: 2rem;
+  margin-top: 2rem; /* Margen superior */
 }
-
 .provider-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: white; /* Fondo blanco */
+  padding: 1.5rem; /* Espaciado interno */
+  border-radius: 0.5rem; /* Bordes redondeados */
+  margin-bottom: 1rem; /* Margen inferior */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
 }
-
-/* Footer */
+/* Estilos para el pie de página */
 footer {
-  background-color: var(--text-color);
-  color: white;
-  padding: 3rem 2rem;
+  background-color: var(--text-color); /* Color de fondo del pie de página */
+  color: white; /* Color del texto */
+  padding: 3rem 2rem; /* Espaciado interno */
 }
-
 .footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  max-width: 1200px; /* Ancho máximo */
+  margin: 0 auto; /* Centra el contenido */
+  display: grid; /* Usar grid para disposición */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Columnas responsivas */
+  gap: 2rem; /* Espacio entre elementos */
 }
-
-/* Responsive */
+/* Estilos responsivos */
 @media (max-width: 768px) {
   nav ul {
-    display: none;
+    display: none; /* Ocultar los enlaces de la navbar por defecto */
   }
-
   .hero-content h1 {
-    font-size: 2rem;
+    font-size: 2rem; /* Tamaño de la fuente del título en pantallas pequeñas */
   }
-
   .section {
-    padding: 2rem 1rem;
+    padding: 2rem 1rem; /* Espaciado interno en pantallas pequeñas */
   }
 }
-
 .section-title h2 {
-  font-size: 40px;
-  font-weight: 700;
-  color: var(--secondary-color);
+  font-size: 40px; /* Tamaño de la fuente del subtítulo */
+  font-weight: 700; /* Peso de la fuente */
+  color: var(--secondary-color); /* Color del subtítulo */
 }
-
 .section-title h1 {
-  font-size: 60px;
-  margin-left: 30px;
-  font-weight: 900;
-  color: var(--primary-color);
-  margin-top: -30px;
+  font-size: 60px; /* Tamaño de la fuente del título */
+  margin-left: 30px; /* Margen izquierdo */
+  font-weight: 900; /* Peso de la fuente */
+  color: var(--primary-color); /* Color del título */
+  margin-top: -30px; /* Margen superior negativo */
 }
-
 .about-content {
-  padding-left: 4rem;
+  padding-left: 4rem; /* Espaciado interno a la izquierda */
 }
-
 .about-content h3 {
-  color: var(--secondary-color);
-  font-size: 1.5rem;
+  color: var(--secondary-color); /* Color del encabezado en la sección "sobre nosotros" */
+  font-size: 1.5rem; /* Tamaño de la fuente */
 }
-
 .about-content p {
-  margin-top: 10px;
-  font-size: 1.1rem;
+  margin-top: 10px; /* Margen superior */
+  font-size: 1.1rem; /* Tamaño de la fuente */
 }
